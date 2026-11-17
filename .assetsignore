@@ -1,0 +1,6 @@
+worker.js
+functions/**
+wrangler.jsonc
+KEYWORD-TOOL-SETUP.md
+WORKER-DEPLOYMENT.md
+.assetsignore
