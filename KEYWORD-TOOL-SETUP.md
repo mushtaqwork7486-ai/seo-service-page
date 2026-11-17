@@ -17,20 +17,20 @@ This repository needs to be deployed as a **Cloudflare Pages project with Functi
 ## Google credentials
 
 1. In Google Cloud Console, enable **Google Ads API** and **Google Search Console API**.
-2. Configure an OAuth consent screen and OAuth client. Generate a refresh token with these scopes:
+2. Open the Google Ads API Overview page in that Cloud project and obtain **Basic access**. Test access is limited to test accounts; Explorer access does not permit KeywordPlanIdeaService keyword-planning calls. API access is now assigned to the Cloud project; developer tokens were sunset on September 9, 2026.
+3. Configure an OAuth consent screen and OAuth client. Generate a refresh token with these scopes:
    - `https://www.googleapis.com/auth/adwords`
    - `https://www.googleapis.com/auth/webmasters.readonly`
-3. Obtain a Google Ads API developer token in the Google Ads API Center. A normal Google Ads account alone does not automatically provide an approved developer token.
-4. Set the following Cloudflare Pages project variables/secrets (Settings → Variables and Secrets):
-   - Secret `GOOGLE_ADS_DEVELOPER_TOKEN`
+4. Set up the Google Ads customer account you want to query. You need its 10-digit customer ID. If you access it through a manager account, also set the manager customer ID.
+5. Set the following Cloudflare project variables/secrets (Settings → Variables and Secrets):
    - Secret `GOOGLE_ADS_CUSTOMER_ID` (10 digits, no hyphens)
    - Secret `GOOGLE_OAUTH_CLIENT_ID`
    - Secret `GOOGLE_OAUTH_CLIENT_SECRET`
    - Secret `GOOGLE_OAUTH_REFRESH_TOKEN`
    - Optional `GOOGLE_ADS_LOGIN_CUSTOMER_ID` if using a manager account
    - Variable `GSC_SITE_URL`, exactly matching your verified Search Console property, e.g. `https://example.com/` or `sc-domain:example.com`
-5. Add the Google account that issued the refresh token as a user of the Search Console property. It must have access to the property.
-6. Redeploy the Pages project after adding the Function and secrets.
+6. Add the Google account that issued the refresh token as a user of the Search Console property. It must have access to the property.
+7. Redeploy the Cloudflare project after adding the Function and secrets.
 
 ## Important limitations
 
